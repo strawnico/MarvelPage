@@ -50,7 +50,7 @@ export default function Characters() {
                     width="200"
                     height="200"
                     loader={myLoader}
-                    className="imgCharacter"
+                    className="imgCard"
                     src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                     alt={character.name}
                   />
