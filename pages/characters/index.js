@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 
-const myLoader = ({src}) => {
+const myLoader = ({ src }) => {
   return `${src}`;
 };
 
@@ -22,7 +22,7 @@ export default function Characters() {
           ts: 1663771025,
           apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
           hash: "68bcb07559b6cc1799e18c9a1644f418",
-          limit: 100,
+          limit: 15,
           offset: 2,
         },
       })
@@ -35,31 +35,40 @@ export default function Characters() {
   }, []);
 
   return (
-    <div>
-      
-      <input onKeyDown={(e) => setInput(e.target.value)} />
+    <main className="wppCharacters md:px-32 px-4 flex flex-col ">
+      <p className="text-center mt-36 text-xs">Página de personagens </p>
+      <h1 className="text-center text-3xl">Pesquise Pelo Personagem</h1>
+      <input
+        className="searchInput mx-auto m mt-6 h-8 rounded border-2 border-zinc-600 bg-transparent "
+        onKeyDown={(e) => setInput(e.target.value)}
+      />
 
-      <div>
-        <ul className="listaCharacters flex justify-center flex-wrap">
-          {filtered.map((character) => {
-            return (
-              <div key={character.id}>
-                <li>
-                  <h1>{character.name}</h1>
+      <section className="mt-12">
+        <div className=" py-14 md:mx-12 mx-2 block">
+          <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
+            {filtered.map((character) => {
+              return (
+                <li
+                  className="card flex relative items-end overflow-hidden"
+                  key={character.id}
+                >
+                  <div className="absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                    {character.name}
+                  </div>
                   <Image
-                    width="200"
-                    height="200"
+                    width="150"
+                    height="230"
                     loader={myLoader}
-                    className="imgCharacter"
+                    className="imgCard rounded-lg object-cover"
                     src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                     alt={character.name}
                   />
                 </li>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    </main>
   );
 }
