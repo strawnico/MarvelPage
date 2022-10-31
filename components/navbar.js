@@ -6,7 +6,7 @@ function Navbar() {
   const [navbarActive, setNavbarActive] = useState(false);
 
   return (
-    <nav className="w-full background-image">
+    <nav className="w-full fixed background-image">
       <div className="justify-between px-3 mx-auto md:flex">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:px-3 md:block">
