@@ -102,13 +102,17 @@ section {
 /* navbar Style */
 
 .navbar.active {
-  background-color: #0B0B0C;
+  background-color: #0b0b0c;
 }
 
-/* search */
-.center {
-  transform: translateX(-50%);
-  left: 50%;
+.navbar {
+  z-index: 10;
+}
+
+.imgCard {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
 }
 
 

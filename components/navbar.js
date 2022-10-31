@@ -1,12 +1,25 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Navbar() {
   const [navbarActive, setNavbarActive] = useState(false);
+  const [navbar, setNavbar] = useState (false);
+
+  const changeBg = () => {
+    if(window.scrollY >= 80){
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  }
+
+  if ( typeof window !== "undefined") {
+    window.addEventListener('scroll', changeBg)
+  }
 
   return (
-    <nav className="w-full fixed background-image">
+    <nav className={navbar ? "navbar active w-full fixed background-image" : "w-full fixed" }>
       <div className="justify-between px-3 mx-auto md:flex">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:px-3 md:block">
