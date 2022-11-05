@@ -43,7 +43,7 @@ export default function Characters() {
         onKeyDown={(e) => setInput(e.target.value)}
       />
 
-      <section className="mt-12">
+      <section className="my-12">
         <div className=" py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {filtered.map((character) => {
