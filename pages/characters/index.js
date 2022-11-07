@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import Pagination from '../../components/paginationCharacters'
+import SearchInput from "../../components/SearchInputCharacters";
+import Modal from "../../components/Modal";
 
 const myLoader = ({ src }) => {
   return `${src}`;
@@ -14,6 +17,7 @@ export default function Characters() {
   const filtered = characters.filter((character) => {
     return character.name.toLowerCase().startsWith(input.toLowerCase());
   });
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -23,7 +27,7 @@ export default function Characters() {
           apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
           hash: "68bcb07559b6cc1799e18c9a1644f418",
           limit: 15,
-          offset: 2,
+          offset:0,
         },
       })
       .then((response) => {
@@ -38,12 +42,9 @@ export default function Characters() {
     <main className="wppCharacters md:px-32 px-4 flex flex-col ">
       <p className="text-center mt-36 text-xs">Página de personagens </p>
       <h1 className="text-center text-3xl">Pesquise Pelo Personagem</h1>
-      <input
-        className="searchInput mx-auto m mt-6 h-8 rounded border-2 border-zinc-600 bg-transparent "
-        onKeyDown={(e) => setInput(e.target.value)}
-      />
+      <input onKeyDown={(e) => setInput(e.target.value)} />
 
-      <section className="my-12">
+      <section className="my-12" onClick={() => setShowModal(true)}>
         <div className=" py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {filtered.map((character) => {
@@ -68,7 +69,8 @@ export default function Characters() {
             })}
           </ul>
         </div>
-      </section>
+      </section>  
+      <Modal show={showModal} onClose={() => setShowModal(false)}>oii</Modal>
     </main>
   );
 }

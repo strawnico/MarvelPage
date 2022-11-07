@@ -91,8 +91,9 @@ section {
   background-color: #0B0B0C;
   background-image: url("/assets/WppP.png");
   background-position: top center;
-  background-size: 100% auto;
   background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .wppCharacters p {
@@ -127,6 +128,23 @@ section {
   margin: 32px 0px 0px 0px;
   cursor: pointer;
 }
+
+/* .pagination {
+  display: flex;
+  list-style: none;
+}
+
+.pagination li + li {
+  margin-left: 1rem;
+}
+
+.pagination__item--active {
+  background: white;
+  font-weight: bold;
+  border: none;
+} */
+
+
 /* @media all and (max-width:30em){
    a.button1{
      display:block;
