@@ -1,8 +1,14 @@
 import {useState, useEffect} from "react";
 import ReactDom from "react-dom";
 import styles from "../styles/Modal.module.css"
+import axios from "axios";
+import Image from "next/image";
 
-export default function Modal({show, onClose, children}) {
+const myLoader = ({ src }) => {
+    return `${src}`;
+  };
+
+export default function Modal({show, onClose}) {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -15,16 +21,18 @@ export default function Modal({show, onClose, children}) {
     }
 
     const modalContent = show ? (
-        <div className={styles.overlay}>
+        <section className="fixed top-0 left-0 w-full h-full flex content-center items-center bg-center md:px-80 px-5 bg-black bg-opacity-70">
             <div className={styles.modal}>
                 <div className={styles.header}> 
                     <a href="#" onClick={handleClose}>
-                        <button className="btn">Close</button>
+                        <button className="btn">X</button>
                     </a>
                 </div>
-                <div className={styles.body}>{children}</div>
+                <div className="py-1">
+                    imagem aqui ne 
+                </div>
             </div>
-        </div>
+        </section>
     ) : null;
 
     if(isBrowser) {

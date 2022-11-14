@@ -5,10 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    fontFamily: {
+    extend: {
+     fontFamily: {
       bebas: ["Bebas Neue", "cursive"],
       inter: ["Inter", "sans-serif"],
-      nimbus: ["Nimbus Sans L", "sans-serif"]
+      nimbus: ["Nimbus Sans L", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"]
+     },
     },
   },
   plugins: [],

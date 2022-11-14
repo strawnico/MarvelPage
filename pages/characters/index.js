@@ -5,7 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import Pagination from '../../components/paginationCharacters'
 import SearchInput from "../../components/SearchInputCharacters";
-import Modal from "../../components/Modal";
+import Modal from "../../components/ModalCharacters";
 
 const myLoader = ({ src }) => {
   return `${src}`;
@@ -40,12 +40,15 @@ export default function Characters() {
 
   return (
     <main className="wppCharacters md:px-32 px-4 flex flex-col ">
-      <p className="text-center mt-36 text-xs">Página de personagens </p>
-      <h1 className="text-center text-3xl">Pesquise Pelo Personagem</h1>
-      <input onKeyDown={(e) => setInput(e.target.value)} />
+      <h1 className="font-nimbus font-semibold text-center mt-36 md:text-3xl text-xl">Pesquise Pelo Personagem</h1>
+      <p className="flex md:w-96 w-80 pt-4 pb-6 mx-auto font-poppins font-medium md:text-sm text-xs text-center text-neutral-500 md:">Aqui você pode encontrar todos os heróis, vilões e todos os personagens da marvel que você pode imaginar :D</p>
+      <div className="input-group font-poppins font-normal text-base box h-10 rounded-lg flex md:w-96 w-64 mx-auto bg-transparent border-solid border border-neutral-500">
+        <input className="bg-transparent outline-none pl-3 md:w-[326px] w-[198px] md:pr-3  mr-0.5 md:text-[13.5px] text-[12px] " type="text" placeholder="Escreva o nome aqui" onKeyDown={(e) => setInput(e.target.value)} />
+        <button className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#955E73] text-sm" type="button">Ok</button>
+      </div>
 
-      <section className="my-12" onClick={() => setShowModal(true)}>
-        <div className=" py-14 md:mx-12 mx-2 block">
+      <section className="caixa my-12" onClick={() => setShowModal(true)}>
+        <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {filtered.map((character) => {
               return (
