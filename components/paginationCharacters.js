@@ -11,7 +11,7 @@ const Pagination = ({ limit, total, offset, setOffset }) => {
      const firstPage = Math.max(current - MAX_LEFT, 1);
 
     return (
-        <ul className="pagination " >
+        <ul className="pagination" >
             {Array.from({ length: Math.min(MAX_ITEMS, pages)})
             .map((_, index) => index + firstPage)
             .map((page) => (

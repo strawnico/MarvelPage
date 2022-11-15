@@ -18,6 +18,8 @@ export default function Characters() {
     return character.name.toLowerCase().startsWith(input.toLowerCase());
   });
   const [showModal, setShowModal] = useState(false);
+  const [offset, setOffset] = useState (0);
+  const [text, setText] = useState("");
 
   useEffect(() => {
     axios
@@ -39,7 +41,7 @@ export default function Characters() {
   }, []);
 
   return (
-    <main className="wppCharacters md:px-32 px-4 flex flex-col ">
+    <main className=" min-h-screen wppCharacters md:px-32 px-4 flex flex-col ">
       <h1 className="font-nimbus font-semibold text-center mt-36 md:text-3xl text-xl">Pesquise Pelo Personagem</h1>
       <p className="flex md:w-96 w-80 pt-4 pb-6 mx-auto font-poppins font-medium md:text-sm text-xs text-center text-neutral-500 md:">Aqui você pode encontrar todos os heróis, vilões e todos os personagens da marvel que você pode imaginar :D</p>
       <div className="input-group font-poppins font-normal text-base box h-10 rounded-lg flex md:w-96 w-64 mx-auto bg-transparent border-solid border border-neutral-500">
@@ -47,16 +49,17 @@ export default function Characters() {
         <button className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#955E73] text-sm" type="button">Ok</button>
       </div>
 
-      <section className="caixa my-12" onClick={() => setShowModal(true)}>
+      <section className="caixa my-12 border-[#955E73]" >
         <div className="py-14 md:mx-12 mx-2 block">
-          <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
+          <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap" >
             {filtered.map((character) => {
               return (
                 <li
                   className="card flex relative items-end overflow-hidden"
                   key={character.id}
+                  onClick={() => setShowModal(true)}
                 >
-                  <div className="absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                  <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
                     {character.name}
                   </div>
                   <Image
@@ -72,7 +75,13 @@ export default function Characters() {
             })}
           </ul>
         </div>
-      </section>  
+         <Pagination 
+         className=""
+        limit={15} 
+        total={1500} 
+        offset={offset} 
+        setOffset={setOffset}/> 
+          </section>  
       <Modal show={showModal} onClose={() => setShowModal(false)}>oii</Modal>
     </main>
   );

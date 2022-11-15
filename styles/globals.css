@@ -43,7 +43,6 @@ section.caixa {
     background-color: #00000000;
     border-radius: 18px;
     border-width: 3px;
-    border-color:#955E73 ;
 }
 
 .card {
@@ -57,7 +56,6 @@ section.caixa {
 }
 
 .card div {
-  background-color: #955E73;
   transform: translateY(100%);
   transition: 0.2s;
 }
@@ -89,7 +87,14 @@ section.caixa {
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
+}
 
+.wppHqs {
+  background-color: #0B0B0C;
+  background-image: url("/assets/WppH.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* navbar Style */
@@ -125,8 +130,10 @@ input::placeholder{
   color: #767676;  
 }
 
-/* .pagination {
+.pagination {
   display: flex;
+  align-items: center;
+  text-align: center;
   list-style: none;
 }
 
@@ -135,16 +142,11 @@ input::placeholder{
 }
 
 .pagination__item--active {
-  background: white;
+  background: #B7758E;
   font-weight: bold;
+  color: #ffffff;
   border: none;
-} */
-
-
-/* @media all and (max-width:30em){
-   a.button1{
-     display:block;
-     margin:0.4em auto;
-   }
-} */
+  width: 25px;
+  border-radius: 3px;
+}
 
