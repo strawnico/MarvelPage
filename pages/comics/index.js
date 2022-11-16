@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Pagination from '../../components/paginationCharacters'
-import SearchInput from "../../components/SearchInputCharacters";
 import Modal from "../../components/ModalCharacters";
 
 const myLoader = ({src}) => {
@@ -14,31 +13,47 @@ const myLoader = ({src}) => {
 export default function Comics() {
   const [comics, setComics] = useState([]);
   const [input, setInput] = useState("");
-  const filtered = comics.filter((comic) => {
-    return comic.title.toLowerCase().startsWith(input.toLowerCase());
-  });
   const [showModal, setShowModal] = useState(false);
   const [offset, setOffset] = useState (0);
   const [text, setText] = useState("");
 
   useEffect(() => {
+    if (input == '') {
+      axios
+        .get("http://gateway.marvel.com/v1/public/comics", {
+          params: {
+            ts: 1663771025,
+            apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
+            hash: "68bcb07559b6cc1799e18c9a1644f418",
+            limit: 15,
+            offset: 0,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data.results);
+          setComics(response.data.data.results);
+        });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
+  if (input) {
     axios
-      .get("http://gateway.marvel.com/v1/public/comics", {
-        params: {
-          ts: 1663771025,
-          apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
-          hash: "68bcb07559b6cc1799e18c9a1644f418",
-          limit: 15,
-          offset: 0,
-        },
-      })
-      .then((response) => {
-        console.log(response.data.data.results);
-        setComics(response.data.data.results);
-      });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+        .get("http://gateway.marvel.com/v1/public/comics", {
+          params: {
+            ts: 1663771025,
+            apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
+            hash: "68bcb07559b6cc1799e18c9a1644f418",
+            limit: 15,
+            offset: 0,
+            titleStartsWith: input,
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data.results);
+          setComics(response.data.data.results);
+        });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }
+  }, [input]); 
 
 
     return (
@@ -53,7 +68,7 @@ export default function Comics() {
        <section className="caixa border-[#5E9595] my-12" >
         <div className="py-14 md:mx-12 mx-2 block">
         <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap" >
-                  {filtered.map((comic) => {
+                  {comics.map((comic) => {
                     return (
                       <li
                       className="card flex relative items-end overflow-hidden"

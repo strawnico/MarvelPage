@@ -1,8 +1,6 @@
 import {useState, useEffect} from "react";
 import ReactDom from "react-dom";
 import styles from "../styles/Modal.module.css"
-import axios from "axios";
-import Image from "next/image";
 
 const myLoader = ({ src }) => {
     return `${src}`;

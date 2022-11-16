@@ -97,6 +97,14 @@ section.caixa {
   background-size: cover;
 }
 
+.wppSer {
+  background-color: #0B0B0C;
+  background-image: url("/assets/WppS.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* navbar Style */
 
 .navbar.active {

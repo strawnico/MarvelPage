@@ -85,7 +85,7 @@ function Navbar() {
               </li>
               <li >
                 <Link href="/series">
-                  <a className="text-zinc-500 transition duration-80 hover:text-white">Series</a>
+                  <a className="text-zinc-500 transition duration-80 hover:text-white">Séries</a>
                   </Link>
               </li>
             </ul>
