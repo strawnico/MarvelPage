@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Pagination from "../../components/paginationCharacters";
-import Modal from "../../components/ModalCharacters";
+import ModalCharacters from "../../components/ModalCharacters";
 
 const myLoader = ({ src }) => {
   return `${src}`;
@@ -114,9 +114,8 @@ export default function Characters() {
           setOffset={setOffset}
         />
       </section>
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        oii
-      </Modal>
+      <ModalCharacters show={showModal} onClose={() => setShowModal(false)}>
+      </ModalCharacters>
     </main>
   );
 }

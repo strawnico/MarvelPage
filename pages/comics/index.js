@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Pagination from '../../components/paginationCharacters'
-import Modal from "../../components/ModalCharacters";
+import ModalComics from "../../components/ModalComics";
 
 const myLoader = ({src}) => {
   return `${src}`;
@@ -98,6 +98,6 @@ export default function Comics() {
             offset={offset} 
             setOffset={setOffset}/> 
           </section>
-          <Modal show={showModal} onClose={() => setShowModal(false)}>oii</Modal>
+          <ModalComics show={showModal} onClose={() => setShowModal(false)}></ModalComics>
       </main>
           );}
