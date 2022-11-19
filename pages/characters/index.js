@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useEffect, useState } from "react";
@@ -15,46 +16,47 @@ export default function Characters() {
   const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [offset, setOffset] = useState(0);
-  const [text, setText] = useState("");
+  const [count, setCount] = useState(0)
 
-  
   useEffect(() => {
-    if (input == '') {
+    if (input == "") {
       axios
         .get("http://gateway.marvel.com/v1/public/characters", {
           params: {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
             hash: "68bcb07559b6cc1799e18c9a1644f418",
-            limit: 15,
+            limit: 100,
             offset: 0,
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
+          console.log(response.data.data.count);
+          setCount(response.data.data.count);
           setCharacters(response.data.data.results);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
-  if (input) {
-    axios
+    if (input) {
+      axios
         .get("http://gateway.marvel.com/v1/public/characters", {
           params: {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
             hash: "68bcb07559b6cc1799e18c9a1644f418",
-            limit: 15,
+            limit: 100,
             offset: 0,
             nameStartsWith: input,
           },
         })
         .then((response) => {
           console.log(response.data.data.results);
+          setCount(response.data.data.count);
           setCharacters(response.data.data.results);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
-  }
-  }, [input]); 
+    }
+  }, [input]);
 
   return (
     <main className=" min-h-screen wppCharacters md:px-32 px-4 flex flex-col ">
@@ -70,7 +72,7 @@ export default function Characters() {
           className="bg-transparent outline-none pl-3 md:w-[326px] w-[198px] md:pr-3  mr-0.5 md:text-[13.5px] text-[12px] "
           type="text"
           placeholder="Escreva o nome aqui"
-          onKeyDown={(e) => setInput(e.target.value)}
+          onChange={(e) => setInput(e.target.value)}
         />
         <button
           className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#955E73] text-sm"
@@ -83,39 +85,47 @@ export default function Characters() {
       <section className="caixa my-12 border-[#955E73]">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
-            {characters.map((character) => {
+            {characters.slice(offset, offset+15).map((character) => {
               return (
-                <li
-                  className="card flex relative items-end overflow-hidden"
-                  key={character.id}
-                  onClick={() => setShowModal(true)}
-                >
-                  <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
-                    {character.name}
+                <section key={character.id} className="behind">
+                  <div className="caixinhas">
+                    <li
+                      className="card flex relative items-end overflow-hidden"
+                      key={character.id}
+                      onClick={() => setShowModal(true)}
+                    >
+                      <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                        {character.name}
+                      </div>
+                      <Image
+                        width="150"
+                        height="230"
+                        loader={myLoader}
+                        className="rounded-lg object-cover"
+                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                        alt={character.name}
+                      />
+                    </li>
                   </div>
-                  <Image
-                    width="150"
-                    height="230"
-                    loader={myLoader}
-                    className="rounded-lg object-cover"
-                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                    alt={character.name}
-                  />
-                </li>
+                </section>
               );
             })}
           </ul>
         </div>
-        <Pagination
-          className=""
-          limit={15}
-          total={1500}
-          offset={offset}
-          setOffset={setOffset}
-        />
+        {characters && (
+          <Pagination
+            className=""
+            limit={15}
+            total={count}
+            offset={offset}
+            setOffset={setOffset}
+          />
+        )}
       </section>
-      <ModalCharacters show={showModal} onClose={() => setShowModal(false)}>
-      </ModalCharacters>
+      <ModalCharacters
+        show={showModal}
+        onClose={() => setShowModal(false)}
+      ></ModalCharacters>
     </main>
   );
 }

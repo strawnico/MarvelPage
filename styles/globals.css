@@ -46,7 +46,7 @@ section.caixa {
 }
 
 .card {
-  opacity : 37%;
+  opacity : 35%;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -158,3 +158,9 @@ input::placeholder{
   border-radius: 3px;
 }
 
+/* .behind {
+  background-color: #B7758E;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  border-radius: 10px;
+} */
