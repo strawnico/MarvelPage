@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Pagination from "../../components/paginationCharacters";
+import Pagination from "../../components/pagination";
 import ModalCharacters from "../../components/ModalCharacters";
 
 const myLoader = ({ src }) => {

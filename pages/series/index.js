@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import Pagination from "../../components/paginationCharacters";
+import Pagination from "../../components/pagination";
 import ModalSeries from "../../components/ModalSeries";
 
 const myLoader = ({ src }) => {
@@ -15,7 +15,7 @@ export default function Series() {
   const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [offset, setOffset] = useState(0);
-  const [text, setText] = useState("");
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     if (input == '') {
@@ -25,12 +25,13 @@ export default function Series() {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
             hash: "68bcb07559b6cc1799e18c9a1644f418",
-            limit: 15,
+            limit: 100,
             offset: 0,
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
+          console.log(response.data.data.count);
+          setCount(response.data.data.count);
           setSeries(response.data.data.results);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,13 +43,14 @@ export default function Series() {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
             hash: "68bcb07559b6cc1799e18c9a1644f418",
-            limit: 15,
+            limit: 100,
             offset: 0,
             titleStartsWith: input,
           },
         })
         .then((response) => {
           console.log(response.data.data.results);
+          setCount(response.data.data.count);
           setSeries(response.data.data.results);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -82,7 +84,7 @@ export default function Series() {
       <section className="caixa my-12 border-[#EBF1A5]">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
-            {series.map((serie) => {
+            {series.slice(offset, offset+15).map((serie) => {
               return (
                 <li
                   className="card flex relative items-end overflow-hidden"
@@ -105,13 +107,15 @@ export default function Series() {
             })}
           </ul>
         </div>
-        <Pagination
-          className=""
-          limit={15}
-          total={1500}
-          offset={offset}
-          setOffset={setOffset}
-        />
+        {series && (
+          <Pagination
+            className=""
+            limit={15}
+            total={count}
+            offset={offset}
+            setOffset={setOffset}
+          />
+        )}
       </section>
       <ModalSeries show={showModal} onClose={() => setShowModal(false)}>
       </ModalSeries>
