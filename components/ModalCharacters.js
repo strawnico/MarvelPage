@@ -1,19 +1,20 @@
 import {useState, useEffect} from "react";
 import ReactDom from "react-dom";
 import styles from "../styles/Modal.module.css"
+import Image from "next/image";
 
 const myLoader = ({ src }) => {
     return `${src}`;
   };
 
-export default function Modal({show, onClose}) {
+export default function Modal({show, onClose, character}) {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
         setIsBrowser(true);
     }, []);
 
-    const handleClose = () => {
+    const handleClose = (event) => {
         event.preventDefault();
         onClose();
     }
@@ -27,8 +28,16 @@ export default function Modal({show, onClose}) {
                     </a>
                 </div>
                 <div className="py-1">
-                    imagem aqui ne 
+                    {character.name}
                 </div>
+                <Image
+                        width="150"
+                        height="230"
+                        loader={myLoader}
+                        className="rounded-lg object-cover"
+                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                        alt={character.name}
+                      />
             </div>
         </section>
     ) : null;

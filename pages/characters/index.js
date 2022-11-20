@@ -15,8 +15,14 @@ export default function Characters() {
   const [characters, setCharacters] = useState([]);
   const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [modalCharacter, setModalCharacter] = useState({});
   const [offset, setOffset] = useState(0);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  const handleOpenModal = (character) => {
+    setModalCharacter(character);
+    setShowModal(true);
+  }
 
   useEffect(() => {
     if (input == "") {
@@ -92,7 +98,7 @@ export default function Characters() {
                     <li
                       className="card flex relative items-end overflow-hidden"
                       key={character.id}
-                      onClick={() => setShowModal(true)}
+                      onClick={() => handleOpenModal(character)}
                     >
                       <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
                         {character.name}
@@ -124,6 +130,7 @@ export default function Characters() {
       </section>
       <ModalCharacters
         show={showModal}
+        character={modalCharacter}
         onClose={() => setShowModal(false)}
       ></ModalCharacters>
     </main>
