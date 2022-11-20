@@ -1,10 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 function Navbar() {
   const [navbarActive, setNavbarActive] = useState(false);
   const [navbar, setNavbar] = useState (false);
+
+  const router = useRouter();
 
   const changeBg = () => {
     if(window.scrollY >= 80){
@@ -70,22 +73,22 @@ function Navbar() {
             <ul className="mt-5 items-center justify-center md:flex md:space-x-10 md:px-7">
               <li>
                 <Link href="/">
-                <a className="text-zinc-500 transition duration-80 hover:text-white">Home</a>
+                <a className={router.pathname == "/" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Home</a>
                   </Link>
               </li>
               <li>
                 <Link href="/characters">
-                  <a className="text-zinc-500 transition duration-80 hover:text-white">Personagens</a>
+                <a className={router.pathname == "/characters" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Personagens</a>
                   </Link>
               </li>
               <li>
                 <Link href="/comics">
-                  <a className="text-zinc-500 transition duration-80 hover:text-white">HQ's</a>
+                <a className={router.pathname == "/comics" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Quadrinhos</a>
                 </Link>
               </li>
               <li >
                 <Link href="/series">
-                  <a className="text-zinc-500 transition duration-80 hover:text-white">Séries</a>
+                <a className={router.pathname == "/series" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Séries</a>
                   </Link>
               </li>
             </ul>
