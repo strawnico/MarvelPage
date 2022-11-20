@@ -18,13 +18,15 @@ export default function Characters() {
   const [modalCharacter, setModalCharacter] = useState({});
   const [offset, setOffset] = useState(0);
   const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const handleOpenModal = (character) => {
     setModalCharacter(character);
     setShowModal(true);
-  }
+  };
 
   useEffect(() => {
+    setLoading(true)
     if (input == "") {
       axios
         .get("http://gateway.marvel.com/v1/public/characters", {
@@ -40,6 +42,7 @@ export default function Characters() {
           console.log(response.data.data.count);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
+          setLoading(false)
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
@@ -59,6 +62,7 @@ export default function Characters() {
           console.log(response.data.data.results);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
+          setLoading(false)
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
@@ -91,31 +95,35 @@ export default function Characters() {
       <section className="caixa my-12 border-[#955E73]">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
-            {characters.slice(offset, offset+15).map((character) => {
-              return (
-                <section key={character.id} className="behind">
-                  <div className="caixinhas">
-                    <li
-                      className="card flex relative items-end overflow-hidden"
-                      key={character.id}
-                      onClick={() => handleOpenModal(character)}
-                    >
-                      <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
-                        {character.name}
-                      </div>
-                      <Image
-                        width="150"
-                        height="230"
-                        loader={myLoader}
-                        className="rounded-lg object-cover"
-                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                        alt={character.name}
-                      />
-                    </li>
-                  </div>
-                </section>
-              );
-            })}
+            {loading ? (
+              <div className=" text-white">carregando</div>
+            ) : (
+              characters.slice(offset, offset + 15).map((character) => {
+                return (
+                  <section key={character.id} className="behind">
+                    <div className="caixinhas">
+                      <li
+                        className="card flex relative items-end overflow-hidden"
+                        key={character.id}
+                        onClick={() => handleOpenModal(character)}
+                      >
+                        <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                          {character.name}
+                        </div>
+                        <Image
+                          width="150"
+                          height="230"
+                          loader={myLoader}
+                          className="rounded-lg object-cover"
+                          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                          alt={character.name}
+                        />
+                      </li>
+                    </div>
+                  </section>
+                );
+              })
+            )}
           </ul>
         </div>
         {characters && (
