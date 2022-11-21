@@ -91,7 +91,7 @@ export default function Comics() {
         </button>
       </div>
       
-      <section className="caixa border-[#5E9595] my-12">
+      <section className="w-full bg-black bg-opacity-0 rounded-2xl border-4 my-12 border-[#5E9595] ">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {loading ? (
@@ -102,7 +102,7 @@ export default function Comics() {
                   <section key={comic.id} className="behind">
                     <div className="caixinhas">
                       <li
-                        className="card flex relative items-end overflow-hidden"
+                        className="card cursor-pointer opacity-30 flex relative items-end overflow-hidden"
                         key={comic.id}
                         onClick={() => handleOpenModal(comic)}
                       >
@@ -113,7 +113,7 @@ export default function Comics() {
                           width="150"
                           height="230"
                           loader={myLoader}
-                          className="imgCard"
+                          className="rounded-lg object-cover"
                           src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                           alt={comic.title}
                         />

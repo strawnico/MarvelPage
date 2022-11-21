@@ -85,14 +85,14 @@ export default function Series() {
           onKeyDown={(e) => setInput(e.target.value)}
         />
         <button
-          className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#EBF1A5] text-sm"
+          className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#64A94C] text-sm"
           type="button"
         >
           Ok
         </button>
       </div>
 
-      <section className="caixa my-12 border-[#EBF1A5]">
+      <section className="bordaS w-full bg-black bg-opacity-0 rounded-4xl border-4 my-12">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {loading ? (
@@ -103,11 +103,11 @@ export default function Series() {
                   <section key={serie.id} className="behind">
                     <div className="caixinhas">
                       <li
-                        className="card flex relative items-end overflow-hidden"
+                        className="card cursor-pointer opacity-30 flex relative items-end overflow-hidden"
                         key={serie.id}
                         onClick={() => handleOpenModal(serie)}
                       >
-                        <div className="bg-[#EBF1A5] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                        <div className="bg-[#64A94C] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
                           {serie.title}
                         </div>
                         <Image

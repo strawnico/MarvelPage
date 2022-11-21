@@ -92,7 +92,7 @@ export default function Characters() {
         </button>
       </div>
 
-      <section className="caixa my-12 border-[#955E73]">
+      <section className=" w-full bg-black bg-opacity-0 rounded-2xl border-[3px] my-12 border-[#955E73]">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {loading ? (
@@ -103,7 +103,7 @@ export default function Characters() {
                   <section key={character.id} className="behind">
                     <div className="caixinhas">
                       <li
-                        className="card flex relative items-end overflow-hidden"
+                        className="card cursor-pointer opacity-30 flex relative items-end overflow-hidden"
                         key={character.id}
                         onClick={() => handleOpenModal(character)}
                       >

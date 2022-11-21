@@ -22,7 +22,7 @@ function Navbar() {
   }
 
   return (
-    <nav className={navbar ? "navbar active w-full fixed background-image" : "w-full fixed" }>
+    <nav className={navbar ? "navbar active z-10 w-full fixed background-image" : "w-full fixed" }> 
       <div className="justify-between px-3 mx-auto md:flex">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:px-3 md:block">
