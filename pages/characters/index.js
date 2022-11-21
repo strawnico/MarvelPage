@@ -26,7 +26,7 @@ export default function Characters() {
   };
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     if (input == "") {
       axios
         .get("http://gateway.marvel.com/v1/public/characters", {
@@ -42,7 +42,7 @@ export default function Characters() {
           console.log(response.data.data.count);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
-          setLoading(false)
+          setLoading(false);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
@@ -62,7 +62,7 @@ export default function Characters() {
           console.log(response.data.data.results);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
-          setLoading(false)
+          setLoading(false);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }

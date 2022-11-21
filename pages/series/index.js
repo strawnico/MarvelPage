@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useEffect, useState } from "react";
@@ -14,11 +15,19 @@ export default function Series() {
   const [series, setSeries] = useState([]);
   const [input, setInput] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [modalSerie, setModalSerie] = useState({});
   const [offset, setOffset] = useState(0);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const handleOpenModal = (serie) => {
+    setModalSerie(serie);
+    setShowModal(true);
+  };
 
   useEffect(() => {
-    if (input == '') {
+    setLoading(true);
+    if (input == "") {
       axios
         .get("http://gateway.marvel.com/v1/public/series", {
           params: {
@@ -33,11 +42,12 @@ export default function Series() {
           console.log(response.data.data.count);
           setCount(response.data.data.count);
           setSeries(response.data.data.results);
+          setLoading(false);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
-  if (input) {
-    axios
+    if (input) {
+      axios
         .get("http://gateway.marvel.com/v1/public/series", {
           params: {
             ts: 1663771025,
@@ -52,10 +62,11 @@ export default function Series() {
           console.log(response.data.data.results);
           setCount(response.data.data.count);
           setSeries(response.data.data.results);
+          setLoading(false);
         });
       // eslint-disable-next-line react-hooks/exhaustive-deps
-  }
-  }, [input]); 
+    }
+  }, [input]);
 
   return (
     <main className=" min-h-screen wppSer md:px-32 px-4 flex flex-col ">
@@ -63,8 +74,8 @@ export default function Series() {
         Pesquise Pela Série
       </h1>
       <p className="flex md:w-96 w-80 pt-4 pb-6 mx-auto font-poppins font-medium md:text-sm text-xs text-center text-neutral-500 md:">
-        Aqui você pode encontrar todas as séries dos heróis, vilões e todos os personagens
-        da marvel que você quiser!
+        Aqui você pode encontrar todas as séries dos heróis, vilões e todos os
+        personagens da marvel que você quiser!
       </p>
       <div className="input-group font-poppins font-normal text-base box h-10 rounded-lg flex md:w-96 w-64 mx-auto bg-transparent border-solid border border-neutral-500">
         <input
@@ -84,27 +95,35 @@ export default function Series() {
       <section className="caixa my-12 border-[#EBF1A5]">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
-            {series.slice(offset, offset+15).map((serie) => {
-              return (
-                <li
-                  className="card flex relative items-end overflow-hidden"
-                  key={serie.id}
-                  onClick={() => setShowModal(true)}
-                >
-                  <div className="bg-[#EBF1A5] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
-                    {serie.title}
-                  </div>
-                  <Image
-                    width="150"
-                    height="230"
-                    loader={myLoader}
-                    className="rounded-lg object-cover"
-                    src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
-                    alt={serie.name}
-                  />
-                </li>
-              );
-            })}
+            {loading ? (
+              <div className=" text-white">carregando</div>
+            ) : (
+              series.slice(offset, offset + 15).map((serie) => {
+                return (
+                  <section key={serie.id} className="behind">
+                    <div className="caixinhas">
+                      <li
+                        className="card flex relative items-end overflow-hidden"
+                        key={serie.id}
+                        onClick={() => handleOpenModal(serie)}
+                      >
+                        <div className="bg-[#EBF1A5] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                          {serie.title}
+                        </div>
+                        <Image
+                          width="150"
+                          height="230"
+                          loader={myLoader}
+                          className="rounded-lg object-cover"
+                          src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
+                          alt={serie.name}
+                        />
+                      </li>
+                    </div>
+                  </section>
+                );
+              })
+            )}
           </ul>
         </div>
         {series && (
@@ -117,8 +136,11 @@ export default function Series() {
           />
         )}
       </section>
-      <ModalSeries show={showModal} onClose={() => setShowModal(false)}>
-      </ModalSeries>
+      <ModalSeries
+        show={showModal}
+        serie={modalSerie}
+        onClose={() => setShowModal(false)}
+      ></ModalSeries>
     </main>
   );
 }
