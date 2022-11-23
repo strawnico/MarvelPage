@@ -95,17 +95,11 @@ html,
   background-size: cover;
 }
 
-/* .bordaS {
-  border-radius: 15px;
-  border: 4px solid transparent;
-  background: linear-gradient(to right, #41383C, #64A94C, #41383C); 
-  -webkit-mask: 
-     linear-gradient(#fff 0 0) padding-box, 
-     linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; 
-          mask-composite: exclude; 
-          
-} */
+.WppModal {
+  background-image: url("../public/assets/WppModal.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 /* Others */
 

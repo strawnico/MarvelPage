@@ -22,7 +22,7 @@ const Pagination = ({ limit, total, offset, setOffset }) => {
               <li key={page}>
                 <button
                   onClick={() => setOffset((page - 1) * limit)}
-                  className={`  ${
+                  className={` "hover:bg-[#955E73] text-white" ${
                     page === current && router.pathname == "/characters"
                       ? " bg-[#955E73] text-white border-none w-6 rounded-sm font-bold"
                       : null

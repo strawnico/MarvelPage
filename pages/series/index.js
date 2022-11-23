@@ -91,12 +91,11 @@ export default function Series() {
           Ok
         </button>
       </div>
-
-      <section className="bordaS w-full bg-black bg-opacity-0 rounded-4xl border-4 my-12">
+      <section className="w-full bg-black bg-opacity-0 rounded-2xl border-[3px] my-12 border-[#64A94C]">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {loading ? (
-              <div className=" text-white">carregando</div>
+              <div className=" text-white">Carregando...</div>
             ) : (
               series.slice(offset, offset + 15).map((serie) => {
                 return (

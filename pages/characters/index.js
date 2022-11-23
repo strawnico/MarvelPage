@@ -39,7 +39,7 @@ export default function Characters() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.count);
+          console.log(response.data.data.results);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
           setLoading(false);
