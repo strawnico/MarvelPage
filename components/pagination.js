@@ -12,7 +12,7 @@ const Pagination = ({ limit, total, offset, setOffset }) => {
   const router = useRouter();
 
   return (
-      <ul className="pagination flex list-none justify-center pb-12">
+      <ul className="pagination flex list-none justify-center">
         {Array.from({ length: Math.min(MAX_ITEMS, pages) })
           .map((_, index) => index + firstPage)
           .map((page) =>

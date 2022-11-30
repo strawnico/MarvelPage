@@ -1,7 +1,6 @@
 /* Padrão CSS Next */
 
 html,
-
 * {
   margin: 0;
   padding: 0;
@@ -17,14 +16,14 @@ html,
     background: black;
 
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
   body * {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     line-height: 160%;
     color: #ffffff;
-  } 
+  }
 }
 
 /* Imports */
@@ -32,10 +31,10 @@ html,
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;300;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('http://fonts.cdnfonts.com/css/nimbus-sans-l');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;300;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("http://fonts.cdnfonts.com/css/nimbus-sans-l");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 /* Cards*/
 
@@ -63,7 +62,7 @@ html,
 /* Backgrounds */
 
 .wppHome {
-  background-color: #0B0B0C;
+  background-color: #0b0b0c;
   background-image: url("/assets/Wpp.png");
   background-position: top center;
   background-size: cover;
@@ -72,7 +71,7 @@ html,
 }
 
 .wppCharacters {
-  background-color: #0B0B0C;
+  background-color: #0b0b0c;
   background-image: url("/assets/WppP.png");
   background-position: top center;
   background-repeat: no-repeat;
@@ -80,7 +79,7 @@ html,
 }
 
 .wppHqs {
-  background-color: #0B0B0C;
+  background-color: #0b0b0c;
   background-image: url("/assets/WppH.png");
   background-position: top center;
   background-repeat: no-repeat;
@@ -88,7 +87,7 @@ html,
 }
 
 .wppSer {
-  background-color: #0B0B0C;
+  background-color: #0b0b0c;
   background-image: url("/assets/WppS.png");
   background-position: top center;
   background-repeat: no-repeat;
@@ -111,13 +110,6 @@ html,
   background-color: #0b0b0c;
 }
 
-input::placeholder{
-  color: #767676;  
+input::placeholder {
+  color: #767676;
 }
-
-/* .behind {
-  background-color: #B7758E;
-  padding-bottom: 4px;
-  padding-right: 4px;
-  border-radius: 10px;
-} */
