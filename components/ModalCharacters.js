@@ -61,7 +61,7 @@ export default function Modal({ show, onClose, character }) {
             width="220"
             height="400"
             loader={myLoader}
-            className="rounded-lg object-cover "
+            className="rounded-lg object-cover"
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
             alt={character.name}
           />
@@ -84,16 +84,16 @@ export default function Modal({ show, onClose, character }) {
 
             <div className="pl-16 pt-16">
               <div className="flex gap-36">
-                <button onClick={() => setTabSelected("comics")}>
+                <button onClick={() => setTabSelected("comics")} className=" border-b-4">
                   Quadrinhos
                 </button>
                 <button onClick={() => setTabSelected("series")}>Séries</button>
               </div>
-              {tabSelected == "comics"
-                ? comics.map((comic) => {
-                    return (
-                      <div className="flex">
-                        <div key={comic.id} className="flex-col flex cursor-pointer">
+              <div className="flex gap-10 flex-wrap overflow-auto max-h-60 max-w-sm">
+                {tabSelected == "comics"
+                  ? comics.map((comic) => {
+                      return (
+                        <div key={comic.id} className="cursor-pointer">
                           <Image
                             width="100"
                             height="150"
@@ -103,23 +103,23 @@ export default function Modal({ show, onClose, character }) {
                             alt={comic.title}
                           />
                         </div>
-                      </div>
-                    );
-                  })
-                : series.map((serie) => {
-                    return (
-                      <div key={serie.id}>
-                        <Image
-                          width="150"
-                          height="230"
-                          loader={myLoader}
-                          className="rounded-lg object-cover"
-                          src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
-                          alt={serie.title}
-                        />
-                      </div>
-                    );
-                  })}
+                      );
+                    })
+                  : series.map((serie) => {
+                      return (
+                        <div key={serie.id}>
+                          <Image
+                            width="150"
+                            height="230"
+                            loader={myLoader}
+                            className="rounded-lg object-cover"
+                            src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
+                            alt={serie.title}
+                          />
+                        </div>
+                      );
+                    })}
+              </div>
             </div>
           </div>
         </div>
