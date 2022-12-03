@@ -1,9 +1,11 @@
+/* eslint-disable react/jsx-key */
 import { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import Image from "next/image";
 import CloseButton from "../public/assets/CloseBtn.svg";
 import Card from "../public/assets/Card.svg";
 import Link from "next/link";
+import axios from "axios";
 
 const myLoader = ({ src }) => {
   return `${src}`;
@@ -11,10 +13,35 @@ const myLoader = ({ src }) => {
 
 export default function Modal({ show, onClose, character }) {
   const [isBrowser, setIsBrowser] = useState(false);
+  const [tabSelected, setTabSelected] = useState("comics");
+  const [comics, setComics] = useState([]);
+  const [series, setSeries] = useState([]);
 
   useEffect(() => {
     setIsBrowser(true);
   }, [character]);
+
+  useEffect(() => {
+    if (!character.id) return;
+    axios
+      .get(
+        `http://gateway.marvel.com/v1/public/characters/${character.id}/${tabSelected}`,
+        {
+          params: {
+            ts: 1663771025,
+            apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
+            hash: "68bcb07559b6cc1799e18c9a1644f418",
+            limit: 100,
+            offset: 0,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data.data.results);
+        if (tabSelected == "comics") setComics(response.data.data.results);
+        if (tabSelected == "series") setSeries(response.data.data.results);
+      });
+  }, [tabSelected, character]);
 
   const handleClose = (event) => {
     event.preventDefault();
@@ -55,13 +82,44 @@ export default function Modal({ show, onClose, character }) {
               )}
             </div>
 
-            <div className="pl-20 pt-16 flex space-x-36">
-            <Link href="/">
-              <a className="">Quadrinho</a>
-            </Link>
-            <Link href="/">
-              <a className="">Série</a>
-            </Link>
+            <div className="pl-16 pt-16">
+              <div className="flex gap-36">
+                <button onClick={() => setTabSelected("comics")}>
+                  Quadrinhos
+                </button>
+                <button onClick={() => setTabSelected("series")}>Séries</button>
+              </div>
+              {tabSelected == "comics"
+                ? comics.map((comic) => {
+                    return (
+                      <div className="flex">
+                        <div key={comic.id} className="flex-col flex cursor-pointer">
+                          <Image
+                            width="100"
+                            height="150"
+                            loader={myLoader}
+                            className="object-cover"
+                            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                            alt={comic.title}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })
+                : series.map((serie) => {
+                    return (
+                      <div key={serie.id}>
+                        <Image
+                          width="150"
+                          height="230"
+                          loader={myLoader}
+                          className="rounded-lg object-cover"
+                          src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
+                          alt={serie.title}
+                        />
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
