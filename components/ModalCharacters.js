@@ -56,7 +56,7 @@ export default function Modal({ show, onClose, character }) {
             <Image src={CloseButton} alt="Close" />
           </a>
         </div>
-        <div className="center px-10 pb-10 flex">
+        <div className="center pl-10 pb-10 flex">
           <Image
             width="220"
             height="400"
@@ -70,7 +70,7 @@ export default function Modal({ show, onClose, character }) {
             <h1 className="pt-4 py-1 font-semibold inter text-2xl">
               {character.name}
             </h1>
-            <div>
+            <div className="pb-20 max-h-28 min-h-[140px]">
               {character.description == "" ? (
                 <p className="py-1 font-light text-stone-400 text-sm max-w-md">
                   *Esse personagem não possui descrição*
@@ -82,18 +82,37 @@ export default function Modal({ show, onClose, character }) {
               )}
             </div>
 
-            <div className="pl-16 pt-16">
-              <div className="flex gap-36">
-                <button onClick={() => setTabSelected("comics")} className=" border-b-4">
+            <div className="">
+              <div className="flex pb-3">
+                <button
+                  onClick={() => setTabSelected("comics")}
+                  className={`rounded-xs px-10 py-1 ${
+                    tabSelected == "comics"
+                      ? "text-white font-medium border-b-4 border-[#955E73]"
+                      : "text-neutral-500 font-normal border-b-2 border-neutral-600 focus:bg-[#6565653d] rounded-sm"
+                  }`}
+                >
                   Quadrinhos
                 </button>
-                <button onClick={() => setTabSelected("series")}>Séries</button>
+                <button
+                  onClick={() => setTabSelected("series")}
+                  className={`rounded-xs px-16 py-1 ${
+                    tabSelected == "series"
+                      ? "text-white font-medium border-b-4 border-[#955E73]"
+                      : "text-neutral-500 font-normal border-b-2 border-neutral-600 focus:bg-[#6565653d] rounded-sm"
+                  }`}
+                >
+                  Séries
+                </button>
               </div>
-              <div className="flex gap-10 flex-wrap overflow-auto max-h-60 max-w-sm">
+              <div className="flex gap-6 flex-wrap overflow-auto max-h-36 max-w-sm">
                 {tabSelected == "comics"
                   ? comics.map((comic) => {
                       return (
                         <div key={comic.id} className="cursor-pointer">
+                          <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
+                            {comic.title}
+                          </div>
                           <Image
                             width="100"
                             height="150"
@@ -109,10 +128,10 @@ export default function Modal({ show, onClose, character }) {
                       return (
                         <div key={serie.id}>
                           <Image
-                            width="150"
-                            height="230"
+                            width="100"
+                            height="150"
                             loader={myLoader}
-                            className="rounded-lg object-cover"
+                            className="object-cover"
                             src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
                             alt={serie.title}
                           />
