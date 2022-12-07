@@ -59,6 +59,18 @@ html,
   opacity: 1;
 }
 
+.tabLeft, .tabRight {
+ transition: 0.5s;
+}
+
+.tabRight {
+  transform: translateX(0%);
+}
+
+.tabLeft {
+  transform: translateX(100%);
+}
+
 /* Backgrounds */
 
 .wppHome {

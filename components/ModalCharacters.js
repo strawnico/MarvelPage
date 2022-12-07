@@ -70,72 +70,95 @@ export default function Modal({ show, onClose, character }) {
             <h1 className="pt-4 py-1 font-semibold inter text-2xl">
               {character.name}
             </h1>
-            <div className="pb-20 max-h-28 min-h-[140px]">
+            <div className="pb-20 max-h-28 min-h-[128px]">
               {character.description == "" ? (
                 <p className="py-1 font-light text-stone-400 text-sm max-w-md">
                   *Esse personagem não possui descrição*
                 </p>
               ) : (
-                <p className="py-1 font-light text-stone-400 text-sm max-w-md">
+                <p className="font-light text-stone-400 text-sm max-w-md">
                   {character.description}
                 </p>
               )}
             </div>
 
-            <div className="">
-              <div className="flex pb-3">
+            <div className="quadrinhos/series transition">
+              <div className="flex pb-3 relative max-w-[385px]">
                 <button
                   onClick={() => setTabSelected("comics")}
-                  className={`rounded-xs px-10 py-1 ${
+                  className={`rounded-xs px-[52px] py-1 ${
                     tabSelected == "comics"
-                      ? "text-white font-medium border-b-4 border-[#955E73]"
-                      : "text-neutral-500 font-normal border-b-2 border-neutral-600 focus:bg-[#6565653d] rounded-sm"
+                      ? "text-white font-medium border-b-2 border-neutral-600 "
+                      : "text-neutral-500 font-normal border-b-2 border-neutral-600 focus:bg-[#6565653d]"
                   }`}
                 >
                   Quadrinhos
                 </button>
                 <button
                   onClick={() => setTabSelected("series")}
-                  className={`rounded-xs px-16 py-1 ${
+                  className={`rounded-xs px-[73px] py-1 ${
                     tabSelected == "series"
-                      ? "text-white font-medium border-b-4 border-[#955E73]"
-                      : "text-neutral-500 font-normal border-b-2 border-neutral-600 focus:bg-[#6565653d] rounded-sm"
+                      ? "text-white font-medium border-b-2 border-neutral-600 "
+                      : "text-neutral-500 font-normal border-b-2 border-neutral-600 focus:bg-[#6565653d]"
                   }`}
                 >
                   Séries
                 </button>
+                <div
+                  className={` transition bg-[#955E73] h-1 w-1/2 z-10 absolute bottom-3 ${
+                    tabSelected == "series" ? "tabLeft" : "tabRight"
+                  }`}
+                ></div>
               </div>
+
               <div className="flex gap-6 flex-wrap overflow-auto max-h-36 max-w-sm">
                 {tabSelected == "comics"
                   ? comics.map((comic) => {
                       return (
-                        <div key={comic.id} className="cursor-pointer">
-                          <div className="bg-[#955E73] absolute z-10 text-sm truncate max-card text-center w-full p-2 rounded-bl-lg rounded-br-lg">
-                            {comic.title}
-                          </div>
-                          <Image
-                            width="100"
-                            height="150"
-                            loader={myLoader}
-                            className="object-cover"
-                            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                            alt={comic.title}
-                          />
-                        </div>
+                        <ul>
+                          <li
+                            className="card flex relative cursor-pointer items-end overflow-hidden"
+                            key={character.id}
+                          >
+                            <div className="bg-neutral-600 absolute z-10 text-white text-xs truncate max-card text-center w-full p-2 ">
+                              {comic.title}
+                            </div>
+                            <Link href="/comics">
+                              <Image
+                                width="100"
+                                height="150"
+                                loader={myLoader}
+                                className="object-cover"
+                                src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                                alt={comic.title}
+                              />
+                            </Link>
+                          </li>
+                        </ul>
                       );
                     })
                   : series.map((serie) => {
                       return (
-                        <div key={serie.id}>
-                          <Image
-                            width="100"
-                            height="150"
-                            loader={myLoader}
-                            className="object-cover"
-                            src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
-                            alt={serie.title}
-                          />
-                        </div>
+                        <ul>
+                          <li
+                            className="card flex relative items-end cursor-pointer overflow-hidden"
+                            key={character.id}
+                          >
+                            <div className="bg-neutral-600 absolute z-10 text-white text-xs truncate max-card text-center w-full p-2 ">
+                              {serie.title}
+                            </div>
+                            <Link href="/series">
+                              <Image
+                                width="100"
+                                height="150"
+                                loader={myLoader}
+                                className="object-cover"
+                                src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
+                                alt={serie.title}
+                              />
+                            </Link>
+                          </li>
+                        </ul>
                       );
                     })}
               </div>
