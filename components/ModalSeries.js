@@ -39,15 +39,15 @@ export default function Modal({ show, onClose, serie }) {
           src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
           alt={serie.title}
         />
-        <div className="flex-col ml-6">
+        <div className="flex-col ml-6 min-h-full">
           <Image src={etiquetaVerde} alt="Card" />
-          <h1 className="pt-4 py-1 font-semibold inter text-2xl">
+          <h1 className="max-w-md  pt-4 py-1 font-semibold inter text-2xl">
             {serie.title}
           </h1>
           <div className="pb-20 max-h-28 min-h-[128px]">
             {serie.description == "" || serie.description == null ? (
-              <p className="py-1 font-light text-stone-400 text-sm max-w-md">
-                *Essa história em quadrinhos não possui descrição*
+                <p className="py-1 font-light text-stone-400 text-sm max-w-md">
+                *Essa série não possui descrição*
               </p>
             ) : (
               <p className="font-light text-stone-400 text-sm max-w-md">

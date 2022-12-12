@@ -15,6 +15,7 @@ export default function Modal({ show, onClose, comic }) {
   const [isBrowser, setIsBrowser] = useState(false);
   const [tabSelected, setTabSelected] = useState("comics");
 
+  
   useEffect(() => {
     setIsBrowser(true);
   }, [comic]);
@@ -22,23 +23,20 @@ export default function Modal({ show, onClose, comic }) {
   useEffect(() => {
     if (!comic.id) return;
     axios
-      .get(
-        `http://gateway.marvel.com/v1/public/comics/${comic.id}`,
-        {
-          params: {
-            ts: 1663771025,
-            apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
-            hash: "68bcb07559b6cc1799e18c9a1644f418",
-            limit: 100,
-            offset: 0,
-          },
-        }
-      )
+      .get(`http://gateway.marvel.com/v1/public/comics/${comic.id}`, {
+        params: {
+          ts: 1663771025,
+          apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
+          hash: "68bcb07559b6cc1799e18c9a1644f418",
+          limit: 100,
+          offset: 0,
+        },
+      })
       .then((response) => {
         console.log(response.data.data.results);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleClose = (event) => {
     event.preventDefault();
@@ -62,12 +60,12 @@ export default function Modal({ show, onClose, comic }) {
             src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
             alt={comic.title}
           />
-          <div className="flex-col ml-6">
+          <div className="flex-col ml-6 ">
             <Image src={etiquetaAzul} alt="Card" />
-            <h1 className="pt-4 py-1 font-semibold inter text-2xl">
+            <h1 className=" max-w-md pt-4 py-1 font-semibold inter text-2xl">
               {comic.title}
             </h1>
-            <div className="pb-20 max-h-28 min-h-[128px]">
+            <div className="pb-20 max-h-28">
               {comic.description == "" || comic.description == null ? (
                 <p className="py-1 font-light text-stone-400 text-sm max-w-md">
                   *Essa história em quadrinhos não possui descrição*
@@ -77,6 +75,9 @@ export default function Modal({ show, onClose, comic }) {
                   {comic.description}
                 </p>
               )}
+              <p className="font-light text-white text-sm max-w-md">
+                {comic.dates[1].date} 
+              </p>
             </div>
           </div>
         </div>

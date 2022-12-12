@@ -109,7 +109,7 @@ export default function Comics() {
                   <section key={comic.id} className="behind">
                     <div className="caixinhas">
                       <li
-                        className=" card cursor-pointer opacity-30 flex relative items-end overflow-hidden"
+                        className=" card cursor-pointer opacity-60 flex relative items-end overflow-hidden"
                         key={comic.id}
                         onClick={() => handleOpenModal(comic)}
                       >

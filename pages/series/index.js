@@ -109,7 +109,7 @@ export default function Series() {
                     <section key={serie.id} className="behind">
                       <div className="caixinhas">
                         <li
-                          className="card cursor-pointer opacity-30 flex relative items-end overflow-hidden"
+                          className="card cursor-pointer opacity-60 flex relative items-end overflow-hidden"
                           key={serie.id}
                           onClick={() => handleOpenModal(serie)}
                         >
