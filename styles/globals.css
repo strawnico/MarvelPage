@@ -109,7 +109,16 @@ html,
 .WppModal {
   background-image: url("../public/assets/WppModal.png");
   background-repeat: no-repeat;
-  background-size: cover;
+}
+
+.WppModalComic {
+  background-image: url("../public/assets/WppModalComic.png");
+  background-repeat: no-repeat;
+}
+
+.WppModalSerie {
+  background-image: url("../public/assets/WppModalSerie.png");
+  background-repeat: no-repeat;
 }
 
 /* Others */

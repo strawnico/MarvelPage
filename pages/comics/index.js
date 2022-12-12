@@ -98,7 +98,7 @@ export default function Comics() {
         </button>
       </div>
       
-      <section className="w-full bg-black bg-opacity-0 rounded-2xl border-4 my-12 border-[#5E9595] ">
+      <section className="w-full  my-12">
         <div className="py-14 md:mx-12 mx-2 block">
           <ul className="lista gap-x-20 gap-y-12 list-none flex justify-center flex-wrap">
             {loading ? (

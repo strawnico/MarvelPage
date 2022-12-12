@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import Image from "next/image";
 import CloseButton from "../public/assets/CloseBtn.svg";
-import Card from "../public/assets/Card.svg";
+import etiquetaRosa from "../public/assets/etiquetaRosa.svg";
 import Link from "next/link";
 import axios from "axios";
 
@@ -66,7 +66,7 @@ export default function Modal({ show, onClose, character }) {
             alt={character.name}
           />
           <div className="flex-col ml-6">
-            <Image src={Card} alt="Card" />
+            <Image src={etiquetaRosa} alt="Card" />
             <h1 className="pt-4 py-1 font-semibold inter text-2xl">
               {character.name}
             </h1>
