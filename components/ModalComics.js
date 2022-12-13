@@ -65,7 +65,7 @@ export default function Modal({ show, onClose, comic }) {
               {comic.title}
             </h1>
             <div className="pb-20 max-h-28">
-              <div>
+              <div className="flex flex-wrap overflow-auto max-h-52 max-w-md">
                 {comic.description == "" || comic.description == null ? (
                   <p className="py-1 font-light text-stone-400 text-sm max-w-md">
                     *Essa história em quadrinhos não possui descrição*
