@@ -15,7 +15,6 @@ export default function Modal({ show, onClose, comic }) {
   const [isBrowser, setIsBrowser] = useState(false);
   const [tabSelected, setTabSelected] = useState("comics");
 
-  
   useEffect(() => {
     setIsBrowser(true);
   }, [comic]);
@@ -66,18 +65,29 @@ export default function Modal({ show, onClose, comic }) {
               {comic.title}
             </h1>
             <div className="pb-20 max-h-28">
-              {comic.description == "" || comic.description == null ? (
-                <p className="py-1 font-light text-stone-400 text-sm max-w-md">
-                  *Essa história em quadrinhos não possui descrição*
-                </p>
-              ) : (
-                <p className="font-light text-stone-400 text-sm max-w-md">
-                  {comic.description}
-                </p>
-              )}
-              <p className="font-light text-white text-sm max-w-md">
-                {comic.dates[1].date} 
-              </p>
+              <div>
+                {comic.description == "" || comic.description == null ? (
+                  <p className="py-1 font-light text-stone-400 text-sm max-w-md">
+                    *Essa história em quadrinhos não possui descrição*
+                  </p>
+                ) : (
+                  <p className=" font-light text-stone-400 text-sm max-w-md">
+                    {comic.description}
+                  </p>
+                )}
+              </div>
+              <div className="font-light text-white text-sm max-w-md mt-2">
+                {comic.creators.items[0] ? (
+                  <div className="border-[1px] border-[#5E9595] max-w-fit p-2 rounded-sm">
+                    <span className="font-semibold">Criadores:</span>{" "}
+                    <span className="text-stone-400">
+                      {comic.creators.items.map((item) => item.name).join(", ")}
+                    </span>
+                  </div>
+                ) : (
+                  <p className="border-[1px] border-[#5E9595] max-w-fit p-2 rounded-sm text-stone-400"> Criador não disponível</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
