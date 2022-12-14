@@ -107,7 +107,7 @@ export default function Comics() {
               comics.slice(offset, offset + 15).map((comic) => {
                 return (
                   <section key={comic.id} className="behind">
-                    <div className="caixinhas">
+                    <div className="cardComics">
                       <li
                         className=" card cursor-pointer opacity-60 flex relative items-end overflow-hidden"
                         key={comic.id}

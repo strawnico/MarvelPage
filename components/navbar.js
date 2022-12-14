@@ -5,38 +5,51 @@ import { useState, useEffect } from "react";
 
 function Navbar() {
   const [navbarActive, setNavbarActive] = useState(false);
-  const [navbar, setNavbar] = useState (false);
+  const [navbar, setNavbar] = useState(false);
 
   const router = useRouter();
 
   const changeBg = () => {
-    if(window.scrollY >= 80){
+    if (window.scrollY >= 80) {
       setNavbar(true);
     } else {
       setNavbar(false);
     }
-  }
+  };
 
-  if ( typeof window !== "undefined") {
-    window.addEventListener('scroll', changeBg)
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", changeBg);
   }
 
   return (
-    <nav className={navbar ? "navbar active z-10 w-full fixed background-image" : "w-full fixed" }> 
-      <div className="justify-between px-3 mx-auto md:flex">
+    <nav
+      className={
+        navbar
+          ? "navbar active z-10 w-full fixed background-image"
+          : "w-full fixed"
+      }
+    >
+      <div
+        className={` justify-between md:flex ${
+          navbarActive ? "bg-black rounded-l-2xl" : ""
+        }`}
+      >
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:px-3 md:block">
             <Link href="/">
-              <a className="text-3xl font-bebas">MarvelNic</a>
+              <a className="text-3xl font-bebas pl-3">MarvelNic</a>
             </Link>
             <div className="md:hidden">
               <button
-                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-2 mr-3 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbarActive(!navbarActive)}
               >
                 {navbarActive ? (
                   <svg
-                    xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 20 20" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
                   >
                     <path
                       fillRule="evenodd"
@@ -67,29 +80,61 @@ function Navbar() {
         <div>
           <div
             className={`flex-1 md:block md:pb-0 md:mt-0 ${
-              navbarActive ? "block" : "hidden"
+              navbarActive ? "block w-full pl-3 pb-5" : "hidden"
             }`}
           >
             <ul className="mt-5 items-center justify-center md:flex md:space-x-10 md:px-7">
               <li>
                 <Link href="/">
-                <a className={router.pathname == "/" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Home</a>
-                  </Link>
+                  <a
+                    className={
+                      router.pathname == "/"
+                        ? "transition duration-80 text-white"
+                        : "text-zinc-500 transition duration-80 hover:text-white"
+                    }
+                  >
+                    Home
+                  </a>
+                </Link>
               </li>
               <li>
                 <Link href="/characters">
-                <a className={router.pathname == "/characters" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Personagens</a>
-                  </Link>
+                  <a
+                    className={
+                      router.pathname == "/characters"
+                        ? "transition duration-80 text-white"
+                        : "text-zinc-500 transition duration-80 hover:text-white"
+                    }
+                  >
+                    Personagens
+                  </a>
+                </Link>
               </li>
               <li>
                 <Link href="/comics">
-                <a className={router.pathname == "/comics" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Quadrinhos</a>
+                  <a
+                    className={
+                      router.pathname == "/comics"
+                        ? "transition duration-80 text-white"
+                        : "text-zinc-500 transition duration-80 hover:text-white"
+                    }
+                  >
+                    Quadrinhos
+                  </a>
                 </Link>
               </li>
-              <li >
+              <li>
                 <Link href="/series">
-                <a className={router.pathname == "/series" ? "transition duration-80 text-white" : "text-zinc-500 transition duration-80 hover:text-white"}>Séries</a>
-                  </Link>
+                  <a
+                    className={
+                      router.pathname == "/series"
+                        ? "transition duration-80 text-white"
+                        : "text-zinc-500 transition duration-80 hover:text-white"
+                    }
+                  >
+                    Séries
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>
