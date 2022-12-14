@@ -18,10 +18,10 @@ export default function App() {
           Aqui você vai poder encontrar todos os dados que a API da marvel
           fornece! Como personagens, histórias em quadrinhos, séries, etc.
         </p>
-        <div className="md:text-start text-center">
+        <div className="md:text-start text-center mt-8">
           <Link href="https://github.com/strawnico/MarvelPage">
             <a
-              className=" border-solid border-2 cursor-pointer text-white rounded-lg mt-8 md:py-2 py-1 md:px-10 px-4 md:text-base text-sm"
+              className=" border-solid border-2 cursor-pointer text-white rounded-lg md:py-2 py-1 md:px-10 px-4 md:text-base text-sm"
               target="blank"
               type="button"
             >

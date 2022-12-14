@@ -44,7 +44,7 @@ export default function Modal({ show, onClose, comic }) {
 
   const modalContent = show ? (
     <section className="z-10 modal fixed top-0 left-0 w-full h-full flex content-center items-center bg-center bg-black bg-opacity-70">
-      <div className="WppModalComic w-5/6 max-w-3xl rounded-2xl m-auto h-[500px] bg-[#171717] z-50">
+      <div className="WppModalComic WppModalSem w-5/6 max-w-3xl rounded-2xl m-auto h-[500px] bg-[#171717] z-50">
         <div className="flex justify-end text-2xl text-white">
           <a href="#" onClick={handleClose} className=" mt-2 mr-3">
             <Image src={CloseButtonComic} alt="Close" />
