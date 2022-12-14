@@ -40,7 +40,6 @@ export default function Characters() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
           setLoading(false);
@@ -60,7 +59,6 @@ export default function Characters() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
           setCount(response.data.data.count);
           setCharacters(response.data.data.results);
           setLoading(false);
@@ -86,17 +84,11 @@ export default function Characters() {
         </p>
         <div className="input-group font-poppins font-normal text-base box h-10 rounded-lg flex md:w-96 w-64 mx-auto bg-transparent border-solid border border-neutral-500">
           <input
-            className="bg-transparent outline-none pl-3 md:w-[326px] w-[198px] md:pr-3  mr-0.5 md:text-[13.5px] text-[12px] "
+            className=" bg-transparent outline-none pl-3 md:w-[326px] w-[198px] md:pr-3  mr-0.5 md:text-[13.5px] text-[12px] "
             type="text"
             placeholder="Escreva o nome aqui"
             onChange={(e) => setInput(e.target.value)}
           />
-          <button
-            className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#955E73] text-sm"
-            type="button"
-          >
-            Ok
-          </button>
         </div>
 
         <section className="w-full  my-12">
