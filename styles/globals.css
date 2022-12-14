@@ -107,17 +107,17 @@ html,
 }
 
 .WppModal {
-  background-image: url("../public/assets/WppModal.png");
+  background-image: url("/assets/WppModal.png");
   background-repeat: no-repeat;
 }
 
 .WppModalComic {
-  background-image: url("../public/assets/WppModalComic.png");
+  background-image: url("/assets/WppModalComic.png");
   background-repeat: no-repeat;
 }
 
 .WppModalSerie {
-  background-image: url("../public/assets/WppModalSerie.png");
+  background-image: url("/assets/WppModalSerie.png");
   background-repeat: no-repeat;
 }
 
@@ -133,4 +133,21 @@ html,
 
 input::placeholder {
   color: #767676;
+}
+
+.modal {
+	-webkit-animation: scale-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+	        animation: scale-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+			
+}
+
+@keyframes scale-in {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
