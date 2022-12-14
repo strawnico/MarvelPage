@@ -107,7 +107,7 @@ export default function Series() {
                 series.slice(offset, offset + 15).map((serie) => {
                   return (
                     <section key={serie.id} className="behind">
-                      <div className="caixinhas">
+                      <div className="cardSeries">
                         <li
                           className="card cursor-pointer opacity-60 flex relative items-end overflow-hidden"
                           key={serie.id}

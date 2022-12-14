@@ -108,7 +108,7 @@ export default function Characters() {
                 characters.slice(offset, offset + 15).map((character) => {
                   return (
                     <section key={character.id} className="behind">
-                      <div className="caixinhas">
+                      <div className="cardCharacters">
                         <li
                           className="card cursor-pointer opacity-60 flex relative items-end overflow-hidden"
                           key={character.id}

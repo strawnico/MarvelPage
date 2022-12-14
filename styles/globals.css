@@ -1,4 +1,4 @@
-/* Padrão CSS Next */
+/* Padrão Next */
 
 html,
 * {
@@ -33,7 +33,7 @@ html,
 @import url("http://fonts.cdnfonts.com/css/nimbus-sans-l");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
-/* Cards*/
+/* Card Style*/
 
 .card {
   transition: 0.2s;
@@ -56,6 +56,43 @@ html,
   opacity: 1;
 }
 
+/* Shadow Card Style */
+
+.cardCharacters {
+  box-shadow: 5px 5px 3px 3px rgba(223, 110, 155, 0.2);
+  border-radius: 8px;
+}
+
+.cardCharacters:hover {
+  transition: 0.3s;
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0);
+  border-radius: 8px;
+}
+
+.cardComics {
+  box-shadow: 5px 5px 3px 3px rgba(65, 124, 183, 0.2);
+  border-radius: 8px;
+}
+
+.cardComics:hover {
+  transition: 0.3s;
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0);
+  border-radius: 8px;
+}
+
+.cardSeries {
+  box-shadow: 5px 5px 3px 3px rgba(110, 223, 135, 0.2);
+  border-radius: 8px;
+}
+
+.cardSeries:hover {
+  transition: 0.3s;
+  box-shadow: 1px 1px 1px 0px rgba(0,0,0,0);
+  border-radius: 8px;
+}
+
+/* Tabs Style */
+
 .tabLeft, .tabRight {
  transition: 0.5s;
 }
@@ -68,7 +105,7 @@ html,
   transform: translateX(100%);
 }
 
-/* Backgrounds */
+/* Backgrounds Images */
 
 .wppHome {
   background-color: #0b0b0c;
@@ -132,10 +169,11 @@ input::placeholder {
   color: #767676;
 }
 
+/* Modal Animation */
+
 .modal {
 	-webkit-animation: scale-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 	        animation: scale-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-			
 }
 
 @keyframes scale-in {
@@ -148,6 +186,8 @@ input::placeholder {
             transform: scale(1);
   }
 }
+
+/* Scroll Style */
 
 body::-webkit-scrollbar {
   width: 12px;               
