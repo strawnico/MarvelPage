@@ -39,7 +39,6 @@ export default function Comics() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
           setCount(response.data.data.count);
           setComics(response.data.data.results);
           setLoading(false);
@@ -59,7 +58,6 @@ export default function Comics() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
           setCount(response.data.data.count);
           setComics(response.data.data.results);
           setLoading(false);
@@ -90,12 +88,6 @@ export default function Comics() {
           placeholder="Escreva o nome aqui"
           onKeyDown={(e) => setInput(e.target.value)}
         />
-        <button
-          className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#5E9595] text-sm"
-          type="button"
-        >
-          Ok
-        </button>
       </div>
       
       <section className="w-full  my-12">

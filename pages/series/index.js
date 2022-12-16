@@ -40,7 +40,6 @@ export default function Series() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.count);
           setCount(response.data.data.count);
           setSeries(response.data.data.results);
           setLoading(false);
@@ -60,7 +59,6 @@ export default function Series() {
           },
         })
         .then((response) => {
-          console.log(response.data.data.results);
           setCount(response.data.data.count);
           setSeries(response.data.data.results);
           setLoading(false);
@@ -91,12 +89,6 @@ export default function Series() {
             placeholder="Escreva o nome aqui"
             onKeyDown={(e) => setInput(e.target.value)}
           />
-          <button
-            className="border-none px-4 flex my-[4.5px] items-center h-7 rounded bg-[#64A94C] text-sm"
-            type="button"
-          >
-            Ok
-          </button>
         </div>
         <section className="w-full  my-12">
           <div className="py-14 md:mx-12 mx-2 block">
