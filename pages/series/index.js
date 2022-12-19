@@ -48,7 +48,7 @@ export default function Series() {
     }
     if (input) {
       axios
-        .get("https://gateway.marvel.com/v1/public/characters", {
+        .get("https://gateway.marvel.com/v1/public/series", {
           params: {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
