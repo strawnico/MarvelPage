@@ -29,7 +29,7 @@ export default function Comics() {
     setLoading(true);
     if (input == "") {
       axios
-        .get("https://gateway.marvel.com/v1/public/characters", {
+        .get("https://gateway.marvel.com/v1/public/comics", {
           params: {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
