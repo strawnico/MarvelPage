@@ -20,6 +20,6 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## MarvelNic
 
-![Preview marvelNic](./preview.git\marvelnic.png)
+![Preview marvelNic](./preview.png)
 
 [Veja Aqui](https://marvelnic.vercel.app/)
