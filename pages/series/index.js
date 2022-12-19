@@ -121,7 +121,7 @@ export default function Series() {
                             loader={myLoader}
                             className="rounded-lg object-cover"
                             src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
-                            alt={serie.name}
+                            alt={serie.title}
                           />
                         </li>
                       </div>
