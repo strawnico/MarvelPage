@@ -25,7 +25,7 @@ export default function Modal({ show, onClose, character }) {
     if (!character.id) return;
     axios
       .get(
-        `http://gateway.marvel.com/v1/public/characters/${character.id}/${tabSelected}`,
+        `https://gateway.marvel.com/v1/public/characters/${character.id}/${tabSelected}`,
         {
           params: {
             ts: 1663771025,

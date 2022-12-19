@@ -30,7 +30,7 @@ export default function Series() {
     setLoading(true);
     if (input == "") {
       axios
-        .get("http://gateway.marvel.com/v1/public/series", {
+        .get("https://gateway.marvel.com/v1/public/characters", {
           params: {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
@@ -48,7 +48,7 @@ export default function Series() {
     }
     if (input) {
       axios
-        .get("http://gateway.marvel.com/v1/public/series", {
+        .get("https://gateway.marvel.com/v1/public/characters", {
           params: {
             ts: 1663771025,
             apikey: "bcfa5f43859aa2f23851ac8cc226aed6",

@@ -22,7 +22,7 @@ export default function Modal({ show, onClose, serie }) {
   useEffect(() => {
     if (!serie.id) return;
     axios
-      .get(`http://gateway.marvel.com/v1/public/series/${serie.id}`, {
+      .get(`https://gateway.marvel.com/v1/public/series/${serie.id}`, {
         params: {
           ts: 1663771025,
           apikey: "bcfa5f43859aa2f23851ac8cc226aed6",
@@ -85,7 +85,10 @@ export default function Modal({ show, onClose, serie }) {
                     </span>
                   </div>
                 ) : (
-                  <p className="border-[1px] border-[#64A94C] max-w-fit p-2 rounded-sm text-stone-400"> Criador não disponível</p>
+                  <p className="border-[1px] border-[#64A94C] max-w-fit p-2 rounded-sm text-stone-400">
+                    {" "}
+                    Criador não disponível
+                  </p>
                 )}
               </div>
             </div>
