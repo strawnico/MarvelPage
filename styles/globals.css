@@ -206,12 +206,12 @@ body * {
 
 /* Scroll Style */
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 8px;
   background: rgb(32, 32, 32);
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background-color: rgb(113, 112, 112);
   border-radius: 15px;
 }
