@@ -8,8 +8,10 @@ import Link from "next/link";
 import axios from "axios";
 
 const myLoader = ({ src }) => {
-  return `${src}`;
+  const srcReplace = src.replace('http', 'https')
+  return `${srcReplace}`;
 };
+
 
 export default function Modal({ show, onClose, serie }) {
   const [isBrowser, setIsBrowser] = useState(false);

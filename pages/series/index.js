@@ -9,7 +9,8 @@ import ModalSeries from "../../components/ModalSeries";
 import Head from "next/head";
 
 const myLoader = ({ src }) => {
-  return `${src}`;
+  const srcReplace = src.replace('http', 'https')
+  return `${srcReplace}`;
 };
 
 export default function Series() {
@@ -121,7 +122,7 @@ export default function Series() {
                             loader={myLoader}
                             className="rounded-lg object-cover"
                             src={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
-                            alt={serie.name}
+                            alt={serie.title}
                           />
                         </li>
                       </div>
