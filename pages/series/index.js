@@ -9,7 +9,8 @@ import ModalSeries from "../../components/ModalSeries";
 import Head from "next/head";
 
 const myLoader = ({ src }) => {
-  return `${src}`;
+  const srcReplace = src.replace('http', 'https')
+  return `${srcReplace}`;
 };
 
 export default function Series() {

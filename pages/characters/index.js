@@ -9,7 +9,8 @@ import ModalCharacters from "../../components/ModalCharacters";
 import Head from "next/head";
 
 const myLoader = ({ src }) => {
-  return `${src}`;
+  const srcReplace = src.replace('http', 'https')
+  return `${srcReplace}`;
 };
 
 export default function Characters() {
